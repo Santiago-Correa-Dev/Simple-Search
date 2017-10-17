@@ -33,7 +33,7 @@
             images.insertAdjacentHTML('afterbegin', htmlContent);
         };
 
-        fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&page=1&sort=newest&api-key=${apiNy}`)
+        fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&page=1&sort=newest&api-key=${apiNy}`)
             .then(response => response.json())
             .then(addArticles)
             .catch(e => requestError(e, "articles"));
