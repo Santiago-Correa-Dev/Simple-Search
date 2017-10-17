@@ -4,6 +4,8 @@
     let searchText = document.getElementById('search');
     let images = document.getElementById('images-area');
     let articlearea = document.getElementById('articles-area');
+    let apiNy = api.apiNy;
+    let apiUp = api.apiUp;
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -13,7 +15,7 @@
 
         fetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {
                 headers: {
-                    Authorization: `Client-ID ${api.apiUp}`
+                    Authorization: `Client-ID ${apiUp}`
                 }
             })
             .then(response => response.json())
@@ -31,7 +33,7 @@
             images.insertAdjacentHTML('afterbegin', htmlContent);
         };
 
-        fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&page=1&sort=newest&api-key=${api.apiNy}`)
+        fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&page=1&sort=newest&api-key=${apiNy}`)
             .then(response => response.json())
             .then(addArticles)
             .catch(e => requestError(e, "articles"));
